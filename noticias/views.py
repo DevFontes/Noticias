@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -22,5 +22,12 @@ class NoticiaView(APIView):
             noticia.save()
             response = serializer.data
             return Response(response, status=status.HTTP_200_OK)
+        
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        noticia = get_object_or_404(Noticia.objects.all(), pk=pk)
+        noticia.delete()
+        return Response({"mensagem": f"Deletado ID {pk}"}, status=status.HTTP_200_OK)
 
 
