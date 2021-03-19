@@ -4,7 +4,7 @@ astroid==2.3.3
 attrs==19.3.0
 black==19.10b0
 click==7.1.1
-Django==3.0.3
+Django==3.1.6
 django-rest-framework-mongoengine==3.4.1
 djangorestframework==3.11.0
 isort==4.3.21
